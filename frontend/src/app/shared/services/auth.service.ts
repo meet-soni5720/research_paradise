@@ -4,6 +4,7 @@ import { backendUrl } from 'src/app/app.component';
 import { HttpClient } from '@angular/common/http';
 import { UserID } from '../models/userdata.model';
 import { DataService } from './data.service';
+import notify from 'devextreme/ui/notify';
 
 export interface IUser {
   email: string;
@@ -85,27 +86,16 @@ export class AuthService {
           sessionStorage["userId"] = res.id;
           sessionStorage["isProfessor"] = res.isProfessor;
           this.router.navigate([this._lastAuthenticatedPath]);
-          return {
-            isOk: true,
-            data: this._user
-          };
         },
         (err) => {
           console.log("error while logging" + err);
+          this.router.navigate(['login-form']);
+          notify("username or password might be incorrect", 'error', 2000);
         }
-        
       );
-    
-      return {
-        isOk: true,
-        data: this._user
-      };
     }
     catch {
-      return {
-        isOk: false,
-        message: "Authentication failed"
-      };
+      notify("server error", 'error', 2000);
     }
   }
 

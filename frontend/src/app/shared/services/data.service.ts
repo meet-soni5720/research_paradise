@@ -16,8 +16,8 @@ export class DataService {
         console.log(response)
         return {
           // Example mapping
-          id: response.cred.user._id,
-          isProfessor: response.cred.user.isProfessor,
+          id: response._id,
+          isProfessor: response.isProfessor,
           // Add other properties as needed
         };
       })

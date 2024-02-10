@@ -1,3 +1,4 @@
+<div class="content-block dx-card responsive-paddings">
 <form class="create-account-form" (submit)="onSubmit($event)">
     <dx-form [formData]="formData" [disabled]="loading">
   
@@ -34,9 +35,9 @@
       </dxi-item>
   
       <dxi-item itemType="button">
-        <dxo-button-options width="100%" type="default" [useSubmitBehavior]="true">
+        <dxo-button-options width="100%" type="default" [useSubmitBehavior]="true" [template]="'submit'">
         </dxo-button-options>
       </dxi-item>
     </dx-form>
-  </form>
-  
+</form>
+</div>

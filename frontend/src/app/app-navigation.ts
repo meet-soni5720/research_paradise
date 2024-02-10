@@ -17,7 +17,7 @@ export const navigation = [
         path: '/tasks'
       }, 
       {
-        text: 'Add Research Posting',
+        text: 'AddResearch',
         path: '/addResearchPost'
       },
     ]

@@ -25,16 +25,7 @@ export class LoginFormComponent {
     const { email, password } = this.formData;
     this.loading = true;
 
-    const result = await this.authService.logIn(email, password);
-    console.log(result)
-    if(!result.isOk){
-      notify("user name or password might be incorrect");
-    }
-    if (result.isOk) {
-      this.loading = false;
-      console.log("routing to home")
-      this.router.navigate(['/home']);
-    }
+    await this.authService.logIn(email, password);
   }
 
   onCreateAccountClick = () => {
