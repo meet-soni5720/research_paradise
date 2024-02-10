@@ -10,6 +10,8 @@ import { AuthService, ScreenService, AppInfoService, DataService } from './share
 import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
 import { addResearchPostModule } from './pages/addResearchPost/addResearchPost.component';
+import { CardComponent, CardModule } from './shared/components/card/card.component';
+import { HomeModule } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { addResearchPostModule } from './pages/addResearchPost/addResearchPost.c
     ChangePasswordFormModule,
     LoginFormModule,
     UnauthenticatedContentModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CardModule,
+    HomeModule
   ],
   providers: [
     AuthService,
