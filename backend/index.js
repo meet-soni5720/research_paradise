@@ -14,6 +14,9 @@ app.use(express.json());
 const userRouter = require('./routes/userAuth.js');
 app.use('/users', userRouter);
 
+const researchPostsRouter = require('./routes/researchPost.js');
+app.use('/researchPosts', researchPostsRouter);
+
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
     console.log("MongoDB database connection established successfully!");
     app.listen(PORT, function (){ 

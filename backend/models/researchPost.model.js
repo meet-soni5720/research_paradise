@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // User schema
-const userSchema = new Schema({
+const researchPostSchema = new Schema({
   professorId: {
     type: String,
     required : true,
@@ -42,6 +42,6 @@ const userSchema = new Schema({
 
 
 
-const User = mongoose.model('User', userSchema);
+const researchPosts = mongoose.model('researchPost', researchPostSchema);
 
-module.exports = User;
+module.exports = researchPosts;
