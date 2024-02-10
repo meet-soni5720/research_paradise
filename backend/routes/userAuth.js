@@ -13,13 +13,15 @@ router.post('/signup', async (req, res) => {
       return res.status(401).json("User already exists");
     }
 
+    console.log(req.body);
+
     user_data = {
         email : req.body.email,
         name : req.body.name,
         password: req.body.password,
-        googleScholar : req.body.googleScholar ? req.body.googleScholar : null,
-        github : req.body.github ? req.body.github : null,
-        additionalLinks : req.body.additionalLinks ? req.body.additionalLinks : null,
+        googleScholar : req.body.googleScholarId ? req.body.googleScholarId : null,
+        github : req.body.githubId ? req.body.githubId : null,
+        additionalLinks : req.body.additionalLink ? req.body.additionalLink : null,
         isProfessor : req.body.isProfessor
     }
 

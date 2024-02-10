@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
+import { backendUrl } from 'src/app/app.component';
+import { HttpClient } from '@angular/common/http';
+import { UserID } from '../models/userdata.model';
 
 export interface IUser {
   email: string;
@@ -7,10 +10,12 @@ export interface IUser {
 }
 
 const defaultPath = '/';
-const defaultUser = {
-  email: 'sandra@example.com',
-  avatarUrl: 'https://js.devexpress.com/Demos/WidgetsGallery/JSDemos/images/employees/06.png'
-};
+// const defaultUser = {
+//   email: 'sandra@example.com',
+//   avatarUrl: 'https://js.devexpress.com/Demos/WidgetsGallery/JSDemos/images/employees/06.png'
+// };
+
+const defaultUser = null;
 
 @Injectable()
 export class AuthService {
@@ -24,13 +29,13 @@ export class AuthService {
     this._lastAuthenticatedPath = value;
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   async logIn(email: string, password: string) {
 
     try {
       // Send request
-      this._user = { ...defaultUser, email };
+      this._user = { email };
       this.router.navigate([this._lastAuthenticatedPath]);
 
       return {
@@ -63,11 +68,14 @@ export class AuthService {
     }
   }
 
-  async createAccount(email: string, password: string) {
+  async createAccount(userData : UserID) {
     try {
       // Send request
-
-      this.router.navigate(['/create-account']);
+      let isOk = false;
+      let temp : any = null;
+      this.http.post(`${backendUrl}/users/signup`, userData).subscribe((data) => {
+        this.router.navigate(['/login-form']);
+      });
       return {
         isOk: true
       };

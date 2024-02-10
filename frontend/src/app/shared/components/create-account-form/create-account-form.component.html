@@ -1,6 +1,12 @@
 <form class="create-account-form" (submit)="onSubmit($event)">
   <dx-form [formData]="formData" [disabled]="loading">
 
+    <dxi-item dataField="name" editorType="dxTextBox"
+      [editorOptions]="{ stylingMode: 'filled', placeholder: 'Full Name' }">
+      <dxi-validation-rule type="required" message="Name is required"></dxi-validation-rule>
+      <dxo-label [visible]="false"></dxo-label>
+    </dxi-item>
+
     <dxi-item dataField="email" editorType="dxTextBox"
       [editorOptions]="{ stylingMode: 'filled', placeholder: 'Email', mode: 'email' }">
       <dxi-validation-rule type="required" message="Email is required"></dxi-validation-rule>
@@ -19,6 +25,26 @@
       <dxi-validation-rule type="required" message="Password is required"></dxi-validation-rule>
       <dxi-validation-rule type="custom" message="Passwords do not match" [validationCallback]="confirmPassword">
       </dxi-validation-rule>
+      <dxo-label [visible]="false"></dxo-label>
+    </dxi-item>
+
+    <dxi-item dataField="isProfessor" editorType="dxSwitch">
+      <!-- <dx-switch [value]="false" [switchedOnText]="'Professor'" [switchedOffText]="'Student'"> </dx-switch> -->
+    <dxo-label [visible]="true"></dxo-label>
+    </dxi-item>
+
+    <dxi-item dataField="googleScholarLink" editorType="dxTextBox"
+      [editorOptions]="{ stylingMode: 'filled', placeholder: 'google scolar link'}">
+      <dxo-label [visible]="false"></dxo-label>
+    </dxi-item>
+
+    <dxi-item dataField="gitubLink" editorType="dxTextBox"
+      [editorOptions]="{ stylingMode: 'filled', placeholder: 'gitub link'}">
+      <dxo-label [visible]="false"></dxo-label>
+    </dxi-item>
+
+    <dxi-item dataField="additionalLink" editorType="dxTextBox"
+      [editorOptions]="{ stylingMode: 'filled', placeholder: 'additionalLink such as portfolio'}">
       <dxo-label [visible]="false"></dxo-label>
     </dxi-item>
 

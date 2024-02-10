@@ -3,9 +3,11 @@ import { Component, NgModule } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ValidationCallbackData } from 'devextreme-angular/common';
 import { DxFormModule } from 'devextreme-angular/ui/form';
+import { DxSwitchModule } from 'devextreme-angular';
 import { DxLoadIndicatorModule } from 'devextreme-angular/ui/load-indicator';
 import notify from 'devextreme/ui/notify';
 import { AuthService } from '../../services';
+import { UserID } from '../../models/userdata.model';
 
 
 @Component({
@@ -21,16 +23,29 @@ export class CreateAccountFormComponent {
 
   async onSubmit(e: Event) {
     e.preventDefault();
-    const { email, password } = this.formData;
+    console.log(this.formData);
+    // const { email, password } = this.formData;
+    // const userID = new UserID(this.formData.email, this.formData.password);
+    const userData : UserID = {
+      email: this.formData.email,
+      password: this.formData.password,
+      name: this.formData.name,
+      isProfessor: this.formData.isProfessor,
+      googleScholarId: this.formData.googleScholarId? this.formData.googleScholarId : null,
+      githubId: this.formData.githubId? this.formData.githubId : null,
+      additionalLinks: this.formData.additionalLinks? this.formData.additionalLinks : null
+    }
+
     this.loading = true;
 
-    const result = await this.authService.createAccount(email, password);
+    const result = await this.authService.createAccount(userData);
+    console.log(result);
     this.loading = false;
 
-    if (result.isOk) {
+    if (result?.isOk) {
       this.router.navigate(['/login-form']);
     } else {
-      notify(result.message, 'error', 2000);
+      notify(result?.message, 'error', 2000);
     }
   }
 
@@ -43,7 +58,8 @@ export class CreateAccountFormComponent {
     CommonModule,
     RouterModule,
     DxFormModule,
-    DxLoadIndicatorModule
+    DxLoadIndicatorModule,
+    DxSwitchModule
   ],
   declarations: [ CreateAccountFormComponent ],
   exports: [ CreateAccountFormComponent ]

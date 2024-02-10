@@ -17,3 +17,5 @@ export class AppComponent  {
     return this.authService.loggedIn;
   }
 }
+
+export const backendUrl = 'http://localhost:9000';

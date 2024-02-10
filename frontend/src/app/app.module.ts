@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { importProvidersFrom } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SideNavOuterToolbarModule, SideNavInnerToolbarModule, SingleCardModule } from './layouts';
@@ -28,7 +30,8 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [
     AuthService,
     ScreenService,
-    AppInfoService
+    AppInfoService,
+    importProvidersFrom(HttpClientModule),
   ],
   bootstrap: [AppComponent]
 })
