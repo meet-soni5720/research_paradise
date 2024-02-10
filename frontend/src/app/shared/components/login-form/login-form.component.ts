@@ -5,6 +5,8 @@ import { DxFormModule } from 'devextreme-angular/ui/form';
 import { DxLoadIndicatorModule } from 'devextreme-angular/ui/load-indicator';
 import notify from 'devextreme/ui/notify';
 import { AuthService } from '../../services';
+import { UserID } from '../../models/userdata.model';
+import { DataService } from '../../services/data.service';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class LoginFormComponent {
   loading = false;
   formData: any = {};
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private dataService : DataService) { }
 
   async onSubmit(e: Event) {
     e.preventDefault();
@@ -24,9 +26,14 @@ export class LoginFormComponent {
     this.loading = true;
 
     const result = await this.authService.logIn(email, password);
-    if (!result.isOk) {
+    console.log(result)
+    if(!result.isOk){
+      notify("user name or password might be incorrect");
+    }
+    if (result.isOk) {
       this.loading = false;
-      notify(result.message, 'error', 2000);
+      console.log("routing to home")
+      this.router.navigate(['/home']);
     }
   }
 

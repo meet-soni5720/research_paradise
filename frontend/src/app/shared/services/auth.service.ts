@@ -3,6 +3,7 @@ import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { backendUrl } from 'src/app/app.component';
 import { HttpClient } from '@angular/common/http';
 import { UserID } from '../models/userdata.model';
+import { DataService } from './data.service';
 
 export interface IUser {
   email: string;
@@ -29,26 +30,7 @@ export class AuthService {
     this._lastAuthenticatedPath = value;
   }
 
-  constructor(private router: Router, private http: HttpClient) { }
-
-  async logIn(email: string, password: string) {
-
-    try {
-      // Send request
-      this._user = { email };
-      this.router.navigate([this._lastAuthenticatedPath]);
-
-      return {
-        isOk: true,
-        data: this._user
-      };
-    }
-    catch {
-      return {
-        isOk: false,
-        message: "Authentication failed"
-      };
-    }
+  constructor(private router: Router, private http: HttpClient, private dataService : DataService) { 
   }
 
   async getUser() {
@@ -72,7 +54,6 @@ export class AuthService {
     try {
       // Send request
       let isOk = false;
-      let temp : any = null;
       this.http.post(`${backendUrl}/users/signup`, userData).subscribe((data) => {
         this.router.navigate(['/login-form']);
       });
@@ -84,6 +65,46 @@ export class AuthService {
       return {
         isOk: false,
         message: "Failed to create account"
+      };
+    }
+  }
+
+  async logIn(email: string, password: string) {
+
+    try {
+      // Send request
+      const loginData = {
+        email : email,
+        password : password
+      }
+
+      this._user = {email};
+      this.dataService.loginEndPoint(loginData).subscribe(
+        (res) => {
+          console.log(res);
+          sessionStorage["userId"] = res.id;
+          sessionStorage["isProfessor"] = res.isProfessor;
+          this.router.navigate([this._lastAuthenticatedPath]);
+          return {
+            isOk: true,
+            data: this._user
+          };
+        },
+        (err) => {
+          console.log("error while logging" + err);
+        }
+        
+      );
+    
+      return {
+        isOk: true,
+        data: this._user
+      };
+    }
+    catch {
+      return {
+        isOk: false,
+        message: "Authentication failed"
       };
     }
   }

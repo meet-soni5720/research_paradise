@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
+import { addResearchPostComponent } from './pages/addResearchPost/addResearchPost.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,11 @@ const routes: Routes = [
   {
     path: 'create-account',
     component: CreateAccountFormComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'addResearchPost',
+    component: addResearchPostComponent,
     canActivate: [ AuthGuardService ]
   },
   {

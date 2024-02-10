@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserID } from 'src/app/shared/models/userdata.model';
+import { DataService } from 'src/app/shared/services';
 
 @Component({
   templateUrl: 'profile.component.html',
@@ -6,23 +8,18 @@ import { Component } from '@angular/core';
 })
 
 export class ProfileComponent {
-  employee: any;
   colCountByScreen: object;
+  userData : any;
+  constructor(private dataService : DataService) {
+    this.dataService.getOneUserData(sessionStorage["userId"]).subscribe(
+      res => {
+        this.userData = res;
+      },
+      error => {
+        console.log(error);
+      }
+    );
 
-  constructor() {
-    this.employee = {
-      ID: 7,
-      FirstName: 'Sandra',
-      LastName: 'Johnson',
-      Prefix: 'Mrs.',
-      Position: 'Controller',
-      Picture: 'images/employees/06.png',
-      BirthDate: new Date('1974/11/5'),
-      HireDate: new Date('2005/05/11'),
-      /* tslint:disable-next-line:max-line-length */
-      Notes: 'Sandra is a CPA and has been our controller since 2008. She loves to interact with staff so if you`ve not met her, be certain to say hi.\r\n\r\nSandra has 2 daughters both of whom are accomplished gymnasts.',
-      Address: '4600 N Virginia Rd.'
-    };
     this.colCountByScreen = {
       xs: 1,
       sm: 2,

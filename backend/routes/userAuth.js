@@ -100,7 +100,7 @@ router.post("/login", async (req, res) => {
     const { email, password } = req.body;
     let user;
 
-    user = await User.find({username: username}).exec();
+    user = await User.find({email: email}).exec();
 
     // If user is not found give back response
     if(user.length === 0) {
@@ -114,11 +114,7 @@ router.post("/login", async (req, res) => {
     }
 
     // Send back the user and token as response
-    res.json({
-      cred: {
-        user: user[0]
-      }
-    });
+    res.json(user[0]);
 
   } catch (err) {
     console.error(err.message);

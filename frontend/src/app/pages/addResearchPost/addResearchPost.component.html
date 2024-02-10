@@ -1,0 +1,42 @@
+<form class="create-account-form" (submit)="onSubmit($event)">
+    <dx-form [formData]="formData" [disabled]="loading">
+  
+      <dxi-item dataField="title" editorType="dxTextBox"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'Project title' }">
+        <dxi-validation-rule type="required" message="project title is required"></dxi-validation-rule>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+  
+      <dxi-item dataField="description" editorType="dxTextBox"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'Project description' }">
+        <dxi-validation-rule type="required" message="description is required"></dxi-validation-rule>
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+  
+      <dxi-item dataField="teamMembers" editorType="dxTextBox"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'teamMembers' }">
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+  
+      <dxi-item dataField="isHiring" editorType="dxSwitch">
+        <!-- <dx-switch [value]="false" [switchedOnText]="'Professor'" [switchedOffText]="'Student'"> </dx-switch> -->
+      <dxo-label [visible]="true"></dxo-label>
+      </dxi-item>
+  
+      <dxi-item dataField="projectLink" editorType="dxTextBox"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'project link'}">
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+  
+      <dxi-item dataField="requiredSkills" editorType="dxTextBox"
+        [editorOptions]="{ stylingMode: 'filled', placeholder: 'skills required for project'}">
+        <dxo-label [visible]="false"></dxo-label>
+      </dxi-item>
+  
+      <dxi-item itemType="button">
+        <dxo-button-options width="100%" type="default" [useSubmitBehavior]="true">
+        </dxo-button-options>
+      </dxi-item>
+    </dx-form>
+  </form>
+  
