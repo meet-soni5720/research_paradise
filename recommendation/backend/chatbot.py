@@ -1,24 +1,15 @@
 # Import Library
 import pandas as pd
-import os
-import tiktoken
 from dotenv import load_dotenv
 from pymongo import MongoClient
-import json
 from bson.objectid import ObjectId
 
-
-from langchain.chains import RetrievalQA, LLMChain
-from langchain_core.documents import Document
 from langchain.chat_models import ChatOpenAI
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
-from langchain.vectorstores import FAISS
-from langchain.document_loaders import DataFrameLoader
-from langchain.prompts import PromptTemplate
-from langchain.memory import ConversationBufferMemory
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
+from config import openai_api_key # My OpenAI API Key 
 
 # Load environment variables from .env
 load_dotenv()
@@ -35,9 +26,12 @@ def _connect_mongo(host, port, username, password, db):
 
     return conn[db]
 
+<<<<<<< HEAD
 # Access the OpenAI API key
 openai_api_key = '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'
 
+=======
+>>>>>>> 3fcbdbf827d625ab29b68b39606a1d03168a95ab
 ###
 # Document splitting
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)

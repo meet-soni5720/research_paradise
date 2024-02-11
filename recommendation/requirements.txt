@@ -5,6 +5,10 @@ langchain==0.0.353
 tiktoken==0.5.2
 pydantic==2.5.3
 openai==1.6.1
+<<<<<<< HEAD
 faiss-cpu==1.7.4
 python-dotenv
+=======
+python-dotenv==1.0.1
+>>>>>>> 3fcbdbf827d625ab29b68b39606a1d03168a95ab
 pymongo==4.6.1
