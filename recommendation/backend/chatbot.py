@@ -26,12 +26,6 @@ def _connect_mongo(host, port, username, password, db):
 
     return conn[db]
 
-<<<<<<< HEAD
-# Access the OpenAI API key
-openai_api_key = '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'
-
-=======
->>>>>>> 3fcbdbf827d625ab29b68b39606a1d03168a95ab
 ###
 # Document splitting
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
