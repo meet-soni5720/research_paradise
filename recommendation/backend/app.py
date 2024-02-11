@@ -2,7 +2,6 @@
 import uvicorn
 from fastapi import FastAPI
 from chatbot import run_quary
-import json
 from pydantic import BaseModel
 
 app = FastAPI()
