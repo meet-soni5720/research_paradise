@@ -4,10 +4,12 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DxFormModule } from 'devextreme-angular/ui/form';
 import { DxSwitchModule } from 'devextreme-angular';
+import { DxButtonModule } from 'devextreme-angular';
 import { DxLoadIndicatorModule } from 'devextreme-angular/ui/load-indicator';
 import { MyResearchCardComponent, MyResearchCardModule } from 'src/app/layouts/my-research-card/my-research-card.component';
 import { DataService } from 'src/app/shared/services';
 import { ApplicationCardModule } from 'src/app/layouts/application-card/application-card.component';
+import { backendUrl } from 'src/app/app.component';
 
 @Component({
   selector: 'application-dashboard',
@@ -18,6 +20,7 @@ export class ApplicationDashboardComponent implements OnInit{
     loading = false;
     fetchedData : any;
     researchId : any;
+    recommendedData : any;
     constructor(private route: ActivatedRoute, private router: Router, private http : HttpClient, private dataService : DataService) {
     }
 
@@ -37,6 +40,21 @@ export class ApplicationDashboardComponent implements OnInit{
         );
       }
 
+      Recommend = () => {
+        this.fetchRecommendation(this.researchId);
+      }
+
+     fetchRecommendation(researchId : any){
+        this.dataService.fetchRecommendation(researchId).subscribe(
+            () => {
+                this.recommendedData = this.dataService.getRecommendationData();
+            },
+            (error) => {
+                console.error("error getting recommendation:", error);
+            }
+        )
+     }
+
 }
 
 @NgModule({
@@ -46,6 +64,7 @@ export class ApplicationDashboardComponent implements OnInit{
       DxFormModule,
       DxLoadIndicatorModule,
       DxSwitchModule,
+      DxButtonModule,
       ApplicationCardModule
     ],
     declarations: [ ApplicationDashboardComponent ],

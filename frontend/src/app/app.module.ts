@@ -15,6 +15,7 @@ import { viewOneResearchPostComponent, viewOneResearchPostModule } from './pages
 import { addApplicationFormModule } from './pages/applicationForm/applicationForm.component';
 import { myResearchModule } from './pages/myResearch/myResearch.component';
 import { MyResearchCardModule } from './layouts/my-research-card/my-research-card.component';
+import { ApplicationDashboardModule } from './pages/applicationDashboard/applicationDashboard.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MyResearchCardModule } from './layouts/my-research-card/my-research-car
     addApplicationFormModule,
     myResearchModule,
     MyResearchCardModule,
+    ApplicationDashboardModule,
     AppRoutingModule
   ],
   providers: [

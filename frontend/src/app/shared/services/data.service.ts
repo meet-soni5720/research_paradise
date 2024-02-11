@@ -10,6 +10,7 @@ export class DataService {
   researchDataForUser : any;
   oneResearchData : any;
   applicationData : any;
+  recommendationData : any;
   constructor(private http: HttpClient) { }
 
   loginEndPoint(data: any): Observable<any> {
@@ -80,8 +81,20 @@ export class DataService {
     );
   }
 
+  fetchRecommendation(researchId : String): Observable<any>{
+    return this.http.get<any>(`${backendUrl}/recommendation/${researchId}`).pipe(
+      tap(data => {
+        this.recommendationData = data;
+      })
+    );
+  }
+
   getApplicationData() : any {
     return this.applicationData;
+  }
+
+  getRecommendationData() : any {
+    return this.recommendationData;
   }
 
   // getoneResearchData(): any {

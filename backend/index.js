@@ -20,6 +20,28 @@ app.use('/researchPosts', researchPostsRouter);
 const hiringFormRouter = require('./routes/hiringForm.js');
 app.use('/application', hiringFormRouter);
 
+app.get('/recommendation/:researchId', function(req, res) {
+
+    console.log(req.body);
+
+    var options = { 
+        method: 'POST', 
+        uri: 'http://127.0.0.1:8000/get_recommendation', 
+        body: {
+            "job_id" : req.params.researchId
+        }, 
+        json: true // Automatically stringifies the body to JSON 
+    }; 
+     
+    // var returndata = "done"; 
+    var sendrequest = request(options, function(error, response, body) {
+        // console.log(response);
+        console.log(body);
+        res.send(body); 
+    });
+    
+});
+
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
     console.log("MongoDB database connection established successfully!");
     app.listen(PORT, function (){ 

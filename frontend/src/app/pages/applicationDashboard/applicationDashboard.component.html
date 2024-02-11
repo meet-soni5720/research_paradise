@@ -6,3 +6,19 @@
     [researchStatement] = "application.researchStatement"
 >
 </application-card>
+
+<br>
+<hr>
+<hr>
+
+<div class="dx-card content">
+    <dx-button
+        icon="check"
+        type="success"
+        text="Recommend me students from above"
+        (onClick)="Recommend()"
+        >
+    </dx-button>
+</div>
+
+<div class="dx-card content recommendation"> {{ recommendedData }} </div>

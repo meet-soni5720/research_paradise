@@ -36,7 +36,7 @@ def _connect_mongo(host, port, username, password, db):
     return conn[db]
 
 # Access the OpenAI API key
-openai_api_key = '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'
+openai_api_key = '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'
 
 ###
 # Document splitting
