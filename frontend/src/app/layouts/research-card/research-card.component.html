@@ -1,0 +1,18 @@
+<dx-scroll-view height="30%" width="100%" class="with-footer single-card">
+  
+    <div class="dx-card content">
+      <div class="header">
+        <div class="title">{{title}}</div>
+        <div class="description">{{description}}</div>
+      </div>
+      <ng-content></ng-content>
+      <dx-button
+          icon="check"
+          type="success"
+          text="View"
+          (onClick)="onviewPost()"
+        >
+        </dx-button>
+  </div>
+</dx-scroll-view>
+  

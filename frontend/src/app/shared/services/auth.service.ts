@@ -85,7 +85,7 @@ export class AuthService {
           console.log(res);
           sessionStorage["userId"] = res.id;
           sessionStorage["isProfessor"] = res.isProfessor;
-          this.router.navigate([this._lastAuthenticatedPath]);
+          this.router.navigate(['/home']);
         },
         (err) => {
           console.log("error while logging" + err);

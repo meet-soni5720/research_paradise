@@ -17,6 +17,9 @@ app.use('/users', userRouter);
 const researchPostsRouter = require('./routes/researchPost.js');
 app.use('/researchPosts', researchPostsRouter);
 
+const hiringFormRouter = require('./routes/hiringForm.js');
+app.use('/application', hiringFormRouter);
+
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
     console.log("MongoDB database connection established successfully!");
     app.listen(PORT, function (){ 

@@ -3,7 +3,18 @@ let researchPosts = require('../models/researchPost.model');
 
 router.get('/', async(req, res) => {
     try{
-        const rps = await researchPosts.find();
+        const rps = await researchPosts.find().sort({updatedAt : -1});
+        res.json(rps);
+    }
+    catch(err){
+        console.error(err.message);
+        res.status(500).json("Server error");
+    }
+});
+
+router.get('/:id', async(req, res) => {
+    try{
+        const rps = await researchPosts.findById(req.params.id);
         res.json(rps);
     }
     catch(err){

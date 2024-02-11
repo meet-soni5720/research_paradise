@@ -1,0 +1,23 @@
+<div class="content-block dx-card responsive-paddings">
+    <form class="create-account-form" (submit)="onSubmit($event)">
+        <dx-form [formData]="formData" [disabled]="loading">
+      
+          <dxi-item dataField="relevantSkills" editorType="dxTextBox"
+            [editorOptions]="{ stylingMode: 'filled', placeholder: 'Skills Relevant to the project' }">
+            <dxi-validation-rule type="required" message="skills field is required"></dxi-validation-rule>
+            <dxo-label [visible]="false"></dxo-label>
+          </dxi-item>
+      
+          <dxi-item dataField="researchStatement" editorType="dxTextBox"
+            [editorOptions]="{ stylingMode: 'filled', placeholder: 'Research Statement' }">
+            <dxi-validation-rule type="required" message="research Statement is required"></dxi-validation-rule>
+            <dxo-label [visible]="false"></dxo-label>
+          </dxi-item>
+      
+          <dxi-item itemType="button">
+            <dxo-button-options width="100%" type="default" [useSubmitBehavior]="true" [template]="'submit'">
+            </dxo-button-options>
+          </dxi-item>
+        </dx-form>
+    </form>
+    </div>

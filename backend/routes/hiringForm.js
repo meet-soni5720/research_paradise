@@ -1,17 +1,17 @@
 const router = require('express').Router();
-const multer = require('multer');
+// const multer = require('multer');
 let hiringForm = require('../models/hiringForm.model');
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'uploads/')
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.originalname)
-    }
-});
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//       cb(null, 'uploads/')
+//     },
+//     filename: function (req, file, cb) {
+//       cb(null, file.originalname)
+//     }
+// });
 
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
 
 router.get('/:researchPost', async(req, res) => {
     try{
@@ -24,14 +24,13 @@ router.get('/:researchPost', async(req, res) => {
     }
 });
 
-router.post('/:researchPost', upload.fields([{ name: 'resume', maxCount: 1 }, { name: 'researchStatement', maxCount: 1 }]),
-     async(req, res) => {
+router.post('/:researchPost', async(req, res) => {
     try{
         hiringForm_data = {
             researchPostId : req.params.researchPost,
             userId : req.body.userId,
-            resume : req.files['resume'][0].path,
-            researchStatement : req.files['researchStatement'][0].path
+            relevantSkills : req.body.relevantSkills,
+            researchStatement : req.body.researchStatement
         }
 
         const hfd = hiringForm(hiringForm_data);

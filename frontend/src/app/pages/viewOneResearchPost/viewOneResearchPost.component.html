@@ -1,0 +1,23 @@
+<dx-scroll-view height="100%" width="100%" class="with-footer single-card">
+  
+    <div class="dx-card content">
+      <div class="header">
+        <div class="title"><div class = "tcolor">Title : </div>   {{researchPostData.title}} <br><br></div>
+        <div class="title"><div class = "tcolor">Description : </div>  {{researchPostData.description}} <br><br></div>
+        <div class="title"><div class = "tcolor">Team Members : </div>  {{researchPostData.teamMembers}} <br><br></div>
+        <div class="title"><div class = "tcolor">Project Link : </div> {{ researchPostData.projectLink}} <br><br></div>
+        <div class="title"><div class = "tcolor">requiredSkills : </div> {{ researchPostData.requiredSkills }} <br><br></div>
+      </div>
+      <ng-content></ng-content>
+            <dx-button
+                *ngIf="isProf == false"
+                icon="check"
+                type="success"
+                text="Apply"
+                (onClick)="onApplyPost()"
+                [disabled] = "!researchPostData.isHiring"
+                >
+            </dx-button>
+    </div>
+</dx-scroll-view>
+  

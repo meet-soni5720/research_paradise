@@ -7,6 +7,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import { addResearchPostComponent } from './pages/addResearchPost/addResearchPost.component';
+import { viewResearchPostComponent } from './pages/researchPosts/researchPosts.component';
+import { viewOneResearchPostComponent } from './pages/viewOneResearchPost/viewOneResearchPost.component';
+import { addApplicationFormComponent } from './pages/applicationForm/applicationForm.component';
 
 const routes: Routes = [
   {
@@ -42,6 +45,21 @@ const routes: Routes = [
   {
     path: 'addResearchPost',
     component: addResearchPostComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'viewResearchPost',
+    component: viewResearchPostComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'viewResearchPost/:Id',
+    component: viewOneResearchPostComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'applyResearchPost/:Id',
+    component: addApplicationFormComponent,
     canActivate: [ AuthGuardService ]
   },
   {

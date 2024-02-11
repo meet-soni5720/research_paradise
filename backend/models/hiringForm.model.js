@@ -14,11 +14,11 @@ const hiringFormSchema = new Schema({
     required: true,
   },
 
-  resume : {
+  relevantSkills :{
     type: String,
-    required: true,
+    required : true
   },
-
+  
   researchStatement : {
     type: String,
     required: true

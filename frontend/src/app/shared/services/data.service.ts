@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { backendUrl } from 'src/app/app.component';
 
 @Injectable()
 export class DataService {
-
+  researchData : any;
+  oneResearchData : any;
   constructor(private http: HttpClient) { }
 
   loginEndPoint(data: any): Observable<any> {
@@ -37,4 +38,25 @@ export class DataService {
         })
     )
   }
+
+  fetchResearchPosts(): Observable<any> {
+    return this.http.get<any>(`${backendUrl}/researchPosts`).pipe(
+      tap(data => this.researchData = data) // Store the fetched data in the variable
+    );
+  }
+
+  getData(): any {
+    return this.researchData; // Return the stored data
+  }
+
+  async fetchOneResearchPost(id : String): Promise<any>{
+    return this.http.get<any>(`${backendUrl}/researchPosts/${id}`).pipe(
+      tap(data => this.oneResearchData = data)
+    ).toPromise();
+  }
+
+  // getoneResearchData(): any {
+  //   return this.oneResearchData; // Return the stored data
+  // }
+
 }

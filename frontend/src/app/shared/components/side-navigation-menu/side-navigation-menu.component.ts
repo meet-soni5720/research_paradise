@@ -40,7 +40,6 @@ export class SideNavigationMenuComponent implements AfterViewInit, OnDestroy {
          return { ...item, expanded: !this._compactMode }
         });
     }
-    console.log(this._items);
     return this._items;
   }
 

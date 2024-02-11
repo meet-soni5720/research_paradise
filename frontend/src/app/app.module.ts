@@ -10,6 +10,9 @@ import { AuthService, ScreenService, AppInfoService, DataService } from './share
 import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
 import { addResearchPostModule } from './pages/addResearchPost/addResearchPost.component';
+import { viewResearchPostModule } from './pages/researchPosts/researchPosts.component';
+import { viewOneResearchPostComponent, viewOneResearchPostModule } from './pages/viewOneResearchPost/viewOneResearchPost.component';
+import { addApplicationFormModule } from './pages/applicationForm/applicationForm.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { addResearchPostModule } from './pages/addResearchPost/addResearchPost.c
     ChangePasswordFormModule,
     LoginFormModule,
     UnauthenticatedContentModule,
+    viewResearchPostModule,
+    viewOneResearchPostModule,
+    addApplicationFormModule,
     AppRoutingModule
   ],
   providers: [

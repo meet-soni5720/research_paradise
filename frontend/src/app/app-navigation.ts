@@ -20,6 +20,10 @@ export const navigation = [
         text: 'AddResearch',
         path: '/addResearchPost'
       },
+      {
+        text: 'viewResearch',
+        path: '/viewResearchPost'
+      },
     ]
   }
 ];
