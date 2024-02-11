@@ -4,3 +4,4 @@ notebook.ipynb
 .env
 combined_info.csv
 .sbuhack
+backend/config.py

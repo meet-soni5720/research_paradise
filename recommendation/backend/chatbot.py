@@ -9,6 +9,7 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
+from config import openai_api_key # My OpenAI API Key 
 
 # Load environment variables from .env
 load_dotenv()
@@ -24,9 +25,6 @@ def _connect_mongo(host, port, username, password, db):
         conn = MongoClient(host, port)
 
     return conn[db]
-
-# Access the OpenAI API key
-openai_api_key = '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'
 
 ###
 # Document splitting
