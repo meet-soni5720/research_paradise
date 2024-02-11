@@ -13,7 +13,7 @@ let hiringForm = require('../models/hiringForm.model');
 
 // const upload = multer({ storage: storage });
 
-router.get('/:researchPost', async(req, res) => {
+router.get('/research/:researchPost', async(req, res) => {
     try{
         const hf = await hiringForm.find({researchPostId : req.params.researchPost});
         res.json(hf);
@@ -29,6 +29,8 @@ router.post('/:researchPost', async(req, res) => {
         hiringForm_data = {
             researchPostId : req.params.researchPost,
             userId : req.body.userId,
+            userName : req.body.userName,
+            email : req.body.email,
             relevantSkills : req.body.relevantSkills,
             researchStatement : req.body.researchStatement
         }

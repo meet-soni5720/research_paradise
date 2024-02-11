@@ -85,6 +85,8 @@ export class AuthService {
           console.log(res);
           sessionStorage["userId"] = res.id;
           sessionStorage["isProfessor"] = res.isProfessor;
+          sessionStorage["userName"] = res.userName;
+          sessionStorage["email"] = res.email;
           this.router.navigate(['/home']);
         },
         (err) => {

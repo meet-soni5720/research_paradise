@@ -5,10 +5,6 @@
   height: 100%;
 }
 
-.tcolor{
-    color: gray;
-}
-
 .single-card {
   .dx-card {
     width: 80%;
@@ -33,9 +29,8 @@
 
       .title {
         color: $base-text-color;
-        line-height: 22px;
+        line-height: 18px;
         font-weight: 500;
-        font-size: 20px;
       }
 
       .description {

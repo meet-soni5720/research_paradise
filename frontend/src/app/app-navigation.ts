@@ -9,13 +9,9 @@ export const navigation = [
     icon: 'folder',
     items: [
       {
-        text: 'Profile',
+        text: 'My Profile',
         path: '/profile'
       },
-      {
-        text: 'Tasks',
-        path: '/tasks'
-      }, 
       {
         text: 'AddResearch',
         path: '/addResearchPost'
@@ -25,7 +21,7 @@ export const navigation = [
         path: '/viewResearchPost'
       },
       {
-        text: 'MyResearch',
+        text: 'My Research',
         path: '/myResearchPost'
       },
     ]

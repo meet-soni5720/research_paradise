@@ -11,6 +11,7 @@ import { viewResearchPostComponent } from './pages/researchPosts/researchPosts.c
 import { viewOneResearchPostComponent } from './pages/viewOneResearchPost/viewOneResearchPost.component';
 import { addApplicationFormComponent } from './pages/applicationForm/applicationForm.component';
 import { myResearchComponent } from './pages/myResearch/myResearch.component';
+import { ApplicationDashboardComponent } from './pages/applicationDashboard/applicationDashboard.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,16 @@ const routes: Routes = [
   {
     path: 'myResearchPost',
     component: myResearchComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'change-password/:recoveryCode',
+    component: ChangePasswordFormComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'viewApplications/:researchId',
+    component: ApplicationDashboardComponent,
     canActivate: [ AuthGuardService ]
   },
   {

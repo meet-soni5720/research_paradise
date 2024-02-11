@@ -9,6 +9,7 @@ export class DataService {
   researchData : any;
   researchDataForUser : any;
   oneResearchData : any;
+  applicationData : any;
   constructor(private http: HttpClient) { }
 
   loginEndPoint(data: any): Observable<any> {
@@ -20,6 +21,8 @@ export class DataService {
           // Example mapping
           id: response._id,
           isProfessor: response.isProfessor,
+          email: response.email,
+          userName: response.name
           // Add other properties as needed
         };
       })
@@ -67,6 +70,18 @@ export class DataService {
 
   getResearchDataForUser(): any {
     return this.researchDataForUser; // Return the stored data
+  }
+
+  fetchApplications(researchId : String): Observable<any>{
+    return this.http.get<any>(`${backendUrl}/application/research/${researchId}`).pipe(
+      tap(data => {
+        this.applicationData = data;
+      })
+    );
+  }
+
+  getApplicationData() : any {
+    return this.applicationData;
   }
 
   // getoneResearchData(): any {

@@ -1,0 +1,8 @@
+<application-card 
+    *ngFor="let application of fetchedData"
+    [userName] = "application.userName"
+    [email] = "application.email"
+    [relevantSkills] = "application.relevantSkills"
+    [researchStatement] = "application.researchStatement"
+>
+</application-card>

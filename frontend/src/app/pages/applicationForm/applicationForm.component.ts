@@ -33,6 +33,8 @@ export class addApplicationFormComponent implements OnInit{
         const applicationData = {
           researchPostId : this.postId,
           userId : sessionStorage["userId"],
+          userName : sessionStorage["userName"],
+          email : sessionStorage["email"],
           relevantSkills : this.formData.relevantSkills,
           researchStatement : this.formData.researchStatement,
         }
