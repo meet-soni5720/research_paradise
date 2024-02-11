@@ -23,7 +23,7 @@ router.get('/:id', async(req, res) => {
     }
 });
 
-router.get('/:professorId', async(req, res) => {
+router.get('/user/:professorId', async(req, res) => {
     try{
         const rps = await researchPosts.find({professorId : req.params.professorId});
         res.json(rps);

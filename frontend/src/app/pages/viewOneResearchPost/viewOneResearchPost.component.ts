@@ -44,10 +44,6 @@ export class viewOneResearchPostComponent implements OnInit{
   onApplyPost = () => {
     this.router.navigate([`/applyResearchPost/${this.postId}`]);
   }
-  
-  onShowApplications = () => {
-    this.router.navigate([`/applications/${this.postId}`]);
-  }
 }
 
 @NgModule({

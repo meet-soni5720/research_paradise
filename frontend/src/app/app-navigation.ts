@@ -21,8 +21,12 @@ export const navigation = [
         path: '/addResearchPost'
       },
       {
-        text: 'viewResearch',
+        text: 'ViewResearch',
         path: '/viewResearchPost'
+      },
+      {
+        text: 'MyResearch',
+        path: '/myResearchPost'
       },
     ]
   }

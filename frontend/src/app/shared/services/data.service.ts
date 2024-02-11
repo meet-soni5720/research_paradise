@@ -7,6 +7,7 @@ import { backendUrl } from 'src/app/app.component';
 @Injectable()
 export class DataService {
   researchData : any;
+  researchDataForUser : any;
   oneResearchData : any;
   constructor(private http: HttpClient) { }
 
@@ -53,6 +54,19 @@ export class DataService {
     return this.http.get<any>(`${backendUrl}/researchPosts/${id}`).pipe(
       tap(data => this.oneResearchData = data)
     ).toPromise();
+  }
+
+  fetchResearchPostsForUser(userId : String): Observable<any>{
+    return this.http.get<any>(`${backendUrl}/researchPosts/user/${userId}`).pipe(
+      tap(data => {
+        this.researchDataForUser = data;
+        // console.log(this.researchDataForUser);
+      })
+    );
+  }
+
+  getResearchDataForUser(): any {
+    return this.researchDataForUser; // Return the stored data
   }
 
   // getoneResearchData(): any {

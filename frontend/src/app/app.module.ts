@@ -13,6 +13,8 @@ import { addResearchPostModule } from './pages/addResearchPost/addResearchPost.c
 import { viewResearchPostModule } from './pages/researchPosts/researchPosts.component';
 import { viewOneResearchPostComponent, viewOneResearchPostModule } from './pages/viewOneResearchPost/viewOneResearchPost.component';
 import { addApplicationFormModule } from './pages/applicationForm/applicationForm.component';
+import { myResearchModule } from './pages/myResearch/myResearch.component';
+import { MyResearchCardModule } from './layouts/my-research-card/my-research-card.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { addApplicationFormModule } from './pages/applicationForm/applicationFor
     viewResearchPostModule,
     viewOneResearchPostModule,
     addApplicationFormModule,
+    myResearchModule,
+    MyResearchCardModule,
     AppRoutingModule
   ],
   providers: [

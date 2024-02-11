@@ -10,6 +10,7 @@ import { addResearchPostComponent } from './pages/addResearchPost/addResearchPos
 import { viewResearchPostComponent } from './pages/researchPosts/researchPosts.component';
 import { viewOneResearchPostComponent } from './pages/viewOneResearchPost/viewOneResearchPost.component';
 import { addApplicationFormComponent } from './pages/applicationForm/applicationForm.component';
+import { myResearchComponent } from './pages/myResearch/myResearch.component';
 
 const routes: Routes = [
   {
@@ -60,6 +61,11 @@ const routes: Routes = [
   {
     path: 'applyResearchPost/:Id',
     component: addApplicationFormComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'myResearchPost',
+    component: myResearchComponent,
     canActivate: [ AuthGuardService ]
   },
   {
